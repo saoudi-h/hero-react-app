@@ -9,7 +9,7 @@ const HerosLists: React.FC<HerosListProps> = ({ allHeros }) => {
     const [herosList, setHerosList] = useState<Heros[]>([]);
     useEffect(() => {
         setHerosList(allHeros);
-    }, [])
+    }, [allHeros])
 
     return (
         <div className='heroslist'>
