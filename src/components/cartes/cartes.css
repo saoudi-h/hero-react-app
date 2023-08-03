@@ -1,0 +1,11 @@
+.cartes {
+  padding: 20px 0;
+  width: 70%;
+  margin: 0 auto;
+  align-items: center;
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
