@@ -1,7 +1,7 @@
 import React from 'react'
 import './Carte.css'
 
-export interface CarteProps {
+export interface Heros {
     id: number;
     name: string;
     image: string;
@@ -13,7 +13,7 @@ export interface CarteProps {
 
 
 
-const Carte: React.FC<CarteProps> = ({ id, name, image, civil, age, ville }: CarteProps) => {
+const Carte: React.FC<Heros> = ({ id, name, image, civil, age, ville }) => {
     return (
         <div className="card" key={id}>
             <div>

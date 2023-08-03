@@ -1,7 +1,7 @@
-import { CarteProps } from "../components/carte/Carte";
+import { Heros } from "../components/carte/Carte";
 
 class Data {
-  private cartes: CarteProps[];
+  private cartes: Heros[];
   constructor() {
     this.cartes = [
       {
