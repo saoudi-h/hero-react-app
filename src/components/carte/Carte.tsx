@@ -8,7 +8,6 @@ export interface Heros {
     civil: string;
     age: number;
     ville: string;
-
 }
 
 

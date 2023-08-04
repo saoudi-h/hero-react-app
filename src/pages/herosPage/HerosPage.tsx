@@ -1,18 +1,30 @@
-import React from 'react'
-import HerosLists from '../../components/herosLists/HerosLists';
-import { Heros } from '../../components/carte/Carte';
+import React, { useEffect, useState } from 'react'
+import Carte, { Heros } from '../../components/carte/Carte';
+import './HerosPage.css'
 import Data from '../../data/Data';
-import './HerosPage.css';
+import { Link } from 'react-router-dom';
 
-const HerosPage = () => {
-    const allHeros: Heros[] = new Data().getAll();
+
+const HerosPage: React.FC = () => {
+    const [herosList, setHerosList] = useState<Heros[]>([]);
+    useEffect(() => {
+        const allHeros = new Data().getAll();
+        setHerosList(allHeros);
+    }, [])
+
     return (
-        <>
-            <h1>My Heros :</h1>
-            {/* <Carte id={1} name='fatigman' civil='hakim' age={32} image='https://avatars.githubusercontent.com/u/68503582?v=4' ville='Oyonnax' /> */}
-            {/* <Cartes /> */}
-            <HerosLists allHeros={allHeros} />
-        </>
+
+        <div className='herospage'>
+            {
+                herosList.map(carte =>
+                (
+                    <Link to={"/heros/profile/"+carte.id}>
+                        <Carte key={carte.id} id={carte.id} name={carte.name} civil={carte.civil} age={carte.age} image={carte.image} ville={carte.ville} />
+                    </Link>
+                )
+
+                )}
+        </div>
     )
 }
 
