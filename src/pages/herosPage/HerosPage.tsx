@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import Carte, { Heros } from '../../components/carte/Carte';
 import './HerosPage.css'
-import Data from '../../data/Data';
 import { Link } from 'react-router-dom';
+import HerosRepository from '../../data/HerosRepository';
+
 
 
 const HerosPage: React.FC = () => {
+
     const [herosList, setHerosList] = useState<Heros[]>([]);
+    const fetchHeros = async () => {
+        const repository = new HerosRepository();
+        const herosData = await repository.getAll();
+        if (herosData) {
+            setHerosList(herosData);
+        }
+    };
+
     useEffect(() => {
-        const allHeros = new Data().getAll();
-        setHerosList(allHeros);
-    }, [])
+        fetchHeros();
+    }, []);
 
     return (
 
@@ -18,7 +27,7 @@ const HerosPage: React.FC = () => {
             {
                 herosList.map(carte =>
                 (
-                    <Link to={"/heros/profile/"+carte.id}>
+                    <Link to={"/heros/profile/" + carte.id} key={carte.id}>
                         <Carte key={carte.id} id={carte.id} name={carte.name} civil={carte.civil} age={carte.age} image={carte.image} ville={carte.ville} />
                     </Link>
                 )

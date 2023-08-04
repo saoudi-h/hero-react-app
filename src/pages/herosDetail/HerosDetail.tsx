@@ -1,11 +1,23 @@
-import React from 'react'
-import Data from '../../data/Data'
-import { Heros } from '../../components/carte/Carte';
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import HerosRepository from '../../data/HerosRepository';
 const HerosDetail = () => {
     let params = useParams();
-    const requestId = parseInt(params.id || '');
-    const herosDetail: Heros | undefined = new Data().getCarteById(requestId);
+    const [herosDetail, setHerosDetail] = useState<any | null>(null);
+
+    const fetchHeroById = async (id: number) => {
+        const repository = new HerosRepository();
+        const heroData = await repository.getHerosById(id);
+        if (heroData) {
+            setHerosDetail(heroData);
+        }
+    };
+
+    useEffect(() => {
+        const requestId = parseInt(params.id || '');
+        fetchHeroById(requestId);
+    }, []);
+
     return (
         <div className="card" key={herosDetail?.id}>
             <div>
