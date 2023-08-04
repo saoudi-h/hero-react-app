@@ -26,8 +26,6 @@ const Carte: React.FC<Heros> = ({ id, name, image, civil, age, ville }) => {
                 <div>Age: {age}</div>
                 <div>Ville: {ville}</div>
             </div>
-
-
         </div>
     )
 }

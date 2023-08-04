@@ -2,20 +2,22 @@
 import './App.css';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import Carte, { Heros } from './components/carte/Carte';
-import Cartes from './components/cartes/Cartes';
-import Compteur from './components/compteur/Compteur';
-import HerosLists from './components/herosLists/HerosLists';
-import Data from './data/Data';
+
+import { Route, Routes } from 'react-router-dom';
+import About from './pages/about/About';
+import Home from './pages/home/Home';
+import HerosPage from './pages/herosPage/HerosPage';
 function App() {
-  const allHeros:Heros[] = new Data().getAll();
   return (
     <div className="App">
       <Header />
-      {/* <Carte id={1} name='fatigman' civil='hakim' age={32} image='https://avatars.githubusercontent.com/u/68503582?v=4' ville='Oyonnax' /> */}
-      {/* <Cartes /> */}
-      <HerosLists allHeros={allHeros}/>
-      <Compteur />
+      <Routes>
+        <Route path='/home' element={<Home />} />
+        <Route path='/heros' element={<HerosPage />} />
+        <Route path='/about' element={<About />} />
+
+        <Route />
+      </Routes>
       <Footer />
     </div>
   );

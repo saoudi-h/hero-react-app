@@ -15,7 +15,6 @@ const Compteur = () => {
             <button type="button" onClick={increment} className="compteur__btn">Incrementer</button>
             <button type="button" onClick={decrement} className="compteur__btn">Decrementer</button>
         </div>
-
     )
 }
 
